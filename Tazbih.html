@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
+    />
+    <title>Tasbih Counter</title>
+    <link
+      href="https://fonts.googleapis.com/css?family=Lato"
+      rel="stylesheet"
+      type="text/css"
+    />
+
+    <!-- styling starts form here -->
+    <style>
+      #mainHead {
+        font-size: 30pt;
+      }
+
+      body {
+        margin: 100;
+        padding: 0;
+        font-family: "Lato", sans-serif;
+        font-size: 20pt;
+        font-weight: bold;
+        background: lightblue;
+        background: -webkit-linear-gradient(-80deg, rgb(0, 252, 34), black);
+      }
+
+      .main {
+        margin: 100px auto;
+        text-align: center;
+      }
+
+      #reset {
+        padding: 20px;
+        background: transparent;
+        text-shadow: 1px 1px 1px #202020;
+        font-family: "Lato", sans-serif;
+        width: 200px;
+        font-size: 20pt;
+        border: 5px solid lightblue;
+        color: lightblue;
+      }
+      #reset:hover {
+        border-color: red;
+      }
+
+      #clickme {
+        padding: 20px;
+        background: transparent;
+        text-shadow: 1px 1px 1px #202020;
+        font-family: "Lato", sans-serif;
+        width: 200px;
+        font-size: 20pt;
+        border: 5px solid lightblue;
+        color: lightblue;
+      }
+
+      #made {
+        color: royalblue;
+      }
+
+      #english {
+        font-weight: bold;
+        font-size: 100px;
+      }
+
+      #arabic {
+        font-size: 50pt;
+      }
+
+      /* This Styling is for the phone for responsiveness  */
+      @media only screen and (max-device-width: 450px) {
+        #arabic {
+          font-size: 50pt;
+        }
+
+        .main {
+          margin: 100px auto;
+          text-align: center;
+          font-size: 10vw;
+        }
+
+        #english {
+          font-weight: bold;
+        }
+
+        #clickme {
+          padding: 20px;
+          background: transparent;
+          text-shadow: 1px 1px 1px #202020;
+          font-family: "Lato", sans-serif;
+          width: 250px;
+          font-size: 50pt;
+          border: 12px solid lightblue;
+          color: lightblue;
+        }
+
+        #reset {
+          padding: 10px;
+          background: transparent;
+          text-shadow: 1px 1px 1px #202020;
+          font-family: "Lato", sans-serif;
+          width: 200px;
+          font-size: 40pt;
+          border: 12px solid lightblue;
+          color: lightblue;
+        }
+
+        body {
+          margin: 100;
+          padding: 0;
+          font-family: "Lato", sans-serif;
+          font-size: 20pt;
+          font-weight: bold;
+          background: lightblue;
+          background: -webkit-linear-gradient(-80deg, rgb(0, 255, 34), black);
+        }
+
+        #mainHead {
+          font-size: 60pt;
+          font-weight: bolder;
+        }
+      }
+    </style>
+    <!-- Styling Ends Here -->
+  </head>
+
+  <!-- Html body starts here. This is main. -->
+
+  <body>
+    <div class="main">
+      <h2 id="mainHead">Tasbih Counter</h2>
+      <h4 id="arabic">اللّٰهُ أَكْبَر‎</h4>
+      <h3 id="english">Allahu Akbar</h3>
+      <button id="clickme">0</button>
+      <h4>Press The Above Button To Read Tasbih</h4>
+      <h3 id="howMuchTotal"></h3>
+      <h6>
+        Note: There are Two option to reset. One is to reset the Total Tasbihats
+        read count to zero and another option is to reset the current Tazbih.
+      </h6>
+      <button id="reset">Reset</button>
+      <h5 id="made">Made By: Jaffar</h5>
+    </div>
+
+    <!-- tazbee counter logic in javascript     -->
+    <script>
+      let button = document.getElementById("clickme");
+      let english = document.getElementById("english");
+      let arabic = document.getElementById("arabic");
+      let reset = document.getElementById("reset");
+      let howMuchTotal = document.getElementById("howMuchTotal");
+      let time = 0,
+        count = "0";
+      if (localStorage.getItem("Time") === null) {
+        localStorage.setItem("Time", 0);
+      }
+      howMuchTotal.innerText =
+        "Total Tasbihat Till Now In This Website: " +
+        localStorage.getItem("Time");
+
+      button.onclick = function () {
+        count++;
+        button.innerText = count;
+        if (english.innerText === "Allahu Akbar" && count == "34") {
+          count = "0";
+          button.innerText = count;
+          english.innerText = "Alham du lillah";
+          arabic.innerText = "ٱلْحَمْدُ لِلَّٰ";
+        } else if (english.innerText === "Alham du lillah" && count == "33") {
+          count = "0";
+          button.innerText = count;
+          english.innerText = "Subhan Allah";
+          arabic.innerText = "سُبْحَانَ ٱللَّٰ";
+        } else if (english.innerText === "Subhan Allah" && count == "33") {
+          count = "0";
+          button.innerText = count;
+          english.innerText = "Allahu Akbar";
+          arabic.innerText = "اللّٰهُ أَكْبَر‎";
+          time++;
+          localStorage.setItem("Time", time);
+          howMuchTotal.innerText =
+            "Total Tasbihat Till Now In This Website: " +
+            localStorage.getItem("Time");
+        }
+      };
+
+      // When Reset button is clicked this is the function for resetting
+      reset.onclick = function () {
+        let confirmResetOfCurrentTazbih = confirm(
+          "Are you sure you want to reset your current tazbih."
+        );
+        if (confirmResetOfCurrentTazbih) {
+          count = "0";
+          button.innerText = count;
+          english.innerText = "Allahu Akbar";
+          arabic.innerText = "اللّٰهُ أَكْبَر‎";
+        }
+        if (localStorage.getItem("Time") > 0) {
+          let confirmResetOfTotalTazbihats = confirm(
+            "Do you also want to reset the Total Tazbihat Count."
+          );
+          if (confirmResetOfTotalTazbihats) {
+            let confirmresetDoubleCheck = confirm(
+              "WARNING!!: It will reset your count of how many tazbihs you have read till now."
+            );
+            if (confirmresetDoubleCheck) {
+              localStorage.setItem("Time", 0);
+            }
+          }
+        }
+        howMuchTotal.innerText =
+          "Total Tasbihat Till Now In This Website: " +
+          localStorage.getItem("Time");
+      };
+      //End of javascript
+    </script>
+  </body>
+</html>
