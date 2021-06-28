@@ -6,7 +6,7 @@
       name="viewport"
       content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
     />
-    <title>Tasbih Counter</title>
+    <title>Tasbih</title>
     <link
       href="https://fonts.googleapis.com/css?family=Lato"
       rel="stylesheet"
@@ -15,8 +15,9 @@
 
     <!-- styling starts form here -->
     <style>
+      
       #mainHead {
-        font-size: 40pt;
+        font-size: 50pt;
       }
 
       body {
@@ -30,23 +31,23 @@
       }
 
       .main {
-        margin: 100px auto;
+        margin: 40px auto;
         text-align: center;
       }
 
       #reset {
-        padding: 20px;
+        padding: 10px;
         background: transparent;
         text-shadow: 1px 1px 1px #202020;
         font-family: "Lato", sans-serif;
         width: 200px;
-        font-size: 20pt;
+        font-size: 30pt;
         border: 5px solid lightblue;
         color: lightblue;
         border-radius: 12px;
         transition: all 0.1s ease;
       }
-      
+
       @media (hover: hover) and (pointer: fine) {
         #reset:hover {
           border-color: red;
@@ -80,25 +81,27 @@
       }
 
       /* This Styling is for the phone for responsiveness  */
-      @media only screen and (max-device-width: 450px) {
+      @media only screen and (max-device-width: 500px) {
         .main {
-          font-size: 10vw;
+          font-size: 9vw;
         }
 
         #clickme {
           width: 250px;
-          font-size: 50pt;
-          border: 9px solid lightblue;
+          font-size: 40pt;
+          border: 4px solid lightblue;
         }
 
         #reset {
-          padding: 10px;
+          padding: 7px;
           font-size: 40pt;
-          border: 9px solid lightblue;
+          border: 4px solid red;
         }
-
+        #english {
+          font-size: 70px;
+        }
         #mainHead {
-          font-size: 60pt;
+          font-size: 72pt;
           font-weight: bolder;
         }
       }
@@ -110,7 +113,7 @@
 
   <body>
     <div class="main">
-      <h2 id="mainHead">Tasbih Counter</h2>
+      <h2 id="mainHead">Tasbih</h2>
       <h4 id="arabic">اللّٰهُ أَكْبَر‎</h4>
       <h3 id="english">Allahu Akbar</h3>
       <button id="clickme">0</button>
@@ -135,6 +138,8 @@
         count = "0";
       if (localStorage.getItem("Time") === null) {
         localStorage.setItem("Time", 0);
+      } else {
+        time = localStorage.getItem("Time");
       }
       howMuchTotal.innerText =
         "Total Tasbihat Till Now In This Website: " +
