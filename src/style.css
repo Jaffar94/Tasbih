@@ -1,0 +1,90 @@
+#mainHead {
+  font-size: 50pt;
+}
+
+body {
+  margin: 100;
+  padding: 0;
+  font-family: "Lato", sans-serif;
+  font-size: 20pt;
+  font-weight: bold;
+  background: lightblue;
+  background: -webkit-linear-gradient(-80deg, rgb(0, 252, 34), black);
+}
+
+.main {
+  margin: 40px auto;
+  text-align: center;
+}
+
+#reset {
+  padding: 10px;
+  background: transparent;
+  text-shadow: 1px 1px 1px #202020;
+  font-family: "Lato", sans-serif;
+  width: 200px;
+  font-size: 30pt;
+  border: 5px solid lightblue;
+  color: lightblue;
+  border-radius: 12px;
+  transition: all 0.1s ease;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  #reset:hover {
+    border-color: red;
+    transform: scale(1.2) perspective(1px);
+  }
+}
+
+#clickme {
+  padding: 20px;
+  background: transparent;
+  text-shadow: 1px 1px 1px #202020;
+  font-family: "Lato", sans-serif;
+  width: 200px;
+  font-size: 20pt;
+  border: 5px solid lightblue;
+  color: lightblue;
+  border-radius: 12px;
+}
+
+#made {
+  color: royalblue;
+}
+
+#english {
+  font-weight: bold;
+  font-size: 100px;
+}
+
+#arabic {
+  font-size: 50pt;
+}
+
+/* This Styling is for the phone for responsiveness  */
+@media only screen and (max-device-width: 500px) {
+    
+  .main {
+    font-size: 9vw;
+  }
+
+  #clickme {
+    width: 250px;
+    font-size: 40pt;
+    border: 4px solid lightblue;
+  }
+
+  #reset {
+    padding: 7px;
+    font-size: 40pt;
+    border: 4px solid red;
+  }
+  #english {
+    font-size: 70px;
+  }
+  #mainHead {
+    font-size: 72pt;
+    font-weight: bolder;
+  }
+}
