@@ -27,7 +27,7 @@ body {
   border: 5px solid #5cdb95;
   color: lightblue;
   border-radius: 12px;
-  transition: all 0.1s ease;
+  transition: all 0.4s ease;
 }
 
 @media (hover: hover) and (pointer: fine) {
