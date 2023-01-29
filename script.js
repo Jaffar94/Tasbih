@@ -58,7 +58,7 @@ reset.onclick = function () {
     );
     if (confirmResetOfTotalTazbihats) {
       let confirmresetDoubleCheck = confirm(
-        "WARNING!!: It will reset your count of tazbihs you have recited till now."
+        "WARNING!!: It will reset your total count of tazbihs you have recited till now."
       );
       if (confirmresetDoubleCheck) {
         localStorage.setItem("Time", 0);
